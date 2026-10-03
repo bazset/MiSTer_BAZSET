@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Fantasia II (Less Explicit)</name>
+  <uuid>CDDAD327-8F49-5736-A2AB-E831F21DF3EA</uuid>
+  <mameversion>0289</mameversion>
+  <setname>fantsia2a</setname>
+  <parent>fantsia2</parent>
+  <year>1997</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>fantsia2a</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 5; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="fantsia2a.zip|fantsia2.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="fnt2-22.bin" crc="a3a92c4b" map="0001"/>
+      <part name="fnt2-17.bin" crc="d0ce4493" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="fnt2-21.bin" crc="e989c2e7" map="0001"/>
+      <part name="fnt2-16.bin" crc="8c06d372" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="fnt2-20.bin" crc="6e9f1e65" map="0001"/>
+      <part name="fnt2-15.bin" crc="85cbeb2b" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="fnt2-19.bin" crc="7953226a" map="0001"/>
+      <part name="fnt2-14.bin" crc="10d8ccff" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="fnt2-18.bin" crc="4cdaeda3" map="0001"/>
+      <part name="fnt2-13.bin" crc="68c7f042" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="obj1.1i" crc="52e6872a"/>
+      <part name="obj2.2i" crc="ea6e3861"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="music2.1b" crc="23cc4f9c"/>
+      <part name="music1.1a" crc="864167c2"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>05</part></rom>
+</misterromdescription>

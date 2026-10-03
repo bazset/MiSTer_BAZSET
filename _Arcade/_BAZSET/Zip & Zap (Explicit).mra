@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Zip &amp; Zap (Explicit)</name>
+  <uuid>DBCA7E29-CA3C-500A-9FA1-AC84EECA188C</uuid>
+  <mameversion>0289</mameversion>
+  <setname>zipzap</setname>
+  <parent></parent>
+  <year>1995</year>
+  <manufacturer>Barko Corp</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>8way</joystick>
+  <filename>zipzap</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Button 3,Start,Coin,Pause" default="A,B,X,Start,Select,Y" count="3"/>
+  <!-- board mode 8; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="zipzap.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="ue17.bin" crc="da6c3fc8" map="0001"/>
+      <part name="ud17.bin" crc="2901fae1" map="0010"/>
+    </interleave>
+    <part repeat="0x80000"> FF </part>
+    <interleave input="8" output="16">
+      <part name="937.bin" crc="61dd653f" map="0001"/>
+      <part name="941.bin" crc="320321ed" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="936.bin" crc="596543cc" map="0001"/>
+      <part name="940.bin" crc="0c9dfb53" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="934.bin" crc="1e65988a" map="0001"/>
+      <part name="939.bin" crc="8790a6a3" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="938.bin" crc="61c06b60" map="0001"/>
+      <part name="942.bin" crc="282413b8" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="u5.bin" crc="c274d8b5"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="snd.bin" crc="bc20423e"/>
+      <part name="snd.bin" crc="bc20423e"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>08</part></rom>
+</misterromdescription>

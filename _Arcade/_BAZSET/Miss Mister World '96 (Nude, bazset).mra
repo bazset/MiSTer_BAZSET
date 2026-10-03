@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Miss Mister World '96 (Nude)</name>
+  <uuid>FBD1B7EA-30C0-521F-85DA-340CA99A6768</uuid>
+  <mameversion>0289</mameversion>
+  <setname>missmw96</setname>
+  <parent>missw96</parent>
+  <year>1996</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>missmw96</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 2; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="missmw96.zip|missw96.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="mmw96_10.bin" crc="45ed1cd9" map="0001"/>
+      <part name="mmw96_06.bin" crc="52ec9e5d" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mmw96_09.bin" crc="6c458b05" map="0001"/>
+      <part name="mmw96_05.bin" crc="48159555" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mmw96_08.bin" crc="1dc72b07" map="0001"/>
+      <part name="mmw96_04.bin" crc="fc3e18fa" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mmw96_07.bin" crc="001572bf" map="0001"/>
+      <part name="mmw96_03.bin" crc="22204025" map="0010"/>
+    </interleave>
+    <part repeat="0x100000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="mmw96_11.bin" crc="7d491f8c"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="mw96_01.bin" crc="e78a659e"/>
+      <part name="mw96_02.bin" crc="60fa0c00"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>02</part></rom>
+</misterromdescription>

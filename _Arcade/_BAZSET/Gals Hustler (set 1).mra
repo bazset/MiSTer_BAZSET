@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Gals Hustler (set 1)</name>
+  <uuid>8B87434D-2083-5D0E-AF2B-D812B312A7E8</uuid>
+  <mameversion>0289</mameversion>
+  <setname>galhustl</setname>
+  <parent>pgalvip</parent>
+  <year>1997</year>
+  <manufacturer>ACE International</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>8way</joystick>
+  <filename>galhustl</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Button 3,Start,Coin,Pause" default="A,B,X,Start,Select,Y" count="3"/>
+  <!-- board mode 7; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="galhustl.zip|pgalvip.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="ue17.3" crc="b2583dbb" map="0001"/>
+      <part name="ud17.4" crc="470a3668" map="0010"/>
+    </interleave>
+    <part repeat="0x400000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="galhstl5.u5" crc="44a18f15"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="galhstl1.ub6" crc="23848790"/>
+      <part name="galhstl2.uc6" crc="2168e54a"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>07</part></rom>
+</misterromdescription>
