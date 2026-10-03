@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Miss World 2002 (Daigom license)</name>
+  <uuid>1A55B938-7287-523C-A131-D8061A018867</uuid>
+  <mameversion>0289</mameversion>
+  <setname>missw02d</setname>
+  <parent>missw02</parent>
+  <year>2002</year>
+  <manufacturer>Daigom</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>missw02d</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 5; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="missw02d.zip|missw02.zip|fantsia2.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="8.u81" crc="316666d0" map="0001"/>
+      <part name="7.u80" crc="d61f4d18" map="0010"/>
+    </interleave>
+    <interleave output="16">
+      <part name="3.bin" crc="fdfe36ba" map="21"/>
+    </interleave>
+    <interleave output="16">
+      <part name="4.bin" crc="aa769a81" map="21"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="6.u113" crc="3e77ca1f"/>
+      <part name="5.u112" crc="ead3411d"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="2.u4" crc="06dc889e"/>
+      <part name="1.u1" crc="864167c2"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>05</part></rom>
+</misterromdescription>

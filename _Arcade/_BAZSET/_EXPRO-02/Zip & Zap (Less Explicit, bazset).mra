@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Zip &amp; Zap (Less Explicit)</name>
+  <uuid>288A9906-CF2E-5769-BA59-B1A2BEE6F3E9</uuid>
+  <mameversion>0289</mameversion>
+  <setname>zipzapa</setname>
+  <parent>zipzap</parent>
+  <year>1995</year>
+  <manufacturer>Barko Corp</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>8way</joystick>
+  <filename>zipzapa</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Button 3,Start,Coin,Pause" default="A,B,X,Start,Select,Y" count="3"/>
+  <!-- board mode 8; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="zipzapa.zip|zipzap.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="31.ue17" crc="e098ef98" map="0001"/>
+      <part name="30.ud17" crc="769ec252" map="0010"/>
+    </interleave>
+    <part repeat="0xc0000"> FF </part>
+    <interleave input="8" output="16">
+      <part name="37.rd2b" crc="0b59d718" map="0001"/>
+      <part name="33.rd2a" crc="df35c8f5" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="38.rd3b" crc="575dfc8c" map="0001"/>
+      <part name="34.rd3a" crc="f8bd156b" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="39" crc="302375c0" map="0001"/>
+      <part name="35" crc="9b6409a6" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="36.rd1b" crc="f3256bbb" map="0001"/>
+      <part name="32.rd1a" crc="1dd511a9" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="40.u5" crc="c274d8b5"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="29.ub6" crc="2cf3b8ea"/>
+      <part name="29.ub6" crc="2cf3b8ea"/>
+      <part name="29.ub6" crc="2cf3b8ea"/>
+      <part name="29.ub6" crc="2cf3b8ea"/>
+      <part name="28.uc6" crc="e5d026c7"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>08</part></rom>
+</misterromdescription>

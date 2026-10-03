@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Miss World '96 (Nude) (C-3000A PCB, set 3)</name>
+  <uuid>DFE31E3C-65A6-55A7-AC80-D2A2A62B8CF6</uuid>
+  <mameversion>0289</mameversion>
+  <setname>missw96b</setname>
+  <parent>missw96</parent>
+  <year>1996</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>missw96b</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 2; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="missw96b.zip|missw96.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="mw96n3_10.prog2" crc="67bde86b" map="0001"/>
+      <part name="mw96n3_6.prog1" crc="de99cc48" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mw96_09.bin" crc="7032dfdf" map="0001"/>
+      <part name="mw96_05.bin" crc="91de5ab5" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mw96_08.bin" crc="b8e66fb5" map="0001"/>
+      <part name="mw96_04.bin" crc="e77a04f8" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="mw96_07.bin" crc="26112ed3" map="0001"/>
+      <part name="mw96_03.bin" crc="e9374a46" map="0010"/>
+    </interleave>
+    <part repeat="0x100000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="mw96_11.bin" crc="3983152f"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="mw96_01.bin" crc="e78a659e"/>
+      <part name="mw96_02.bin" crc="60fa0c00"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>02</part></rom>
+</misterromdescription>

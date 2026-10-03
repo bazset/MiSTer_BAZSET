@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Gals Panic (Japan, EXPRO-02 PCB)</name>
+  <uuid>05B336CF-320B-58B7-A5B5-911A950501C8</uuid>
+  <mameversion>0289</mameversion>
+  <setname>galsnewj</setname>
+  <parent>galsnew</parent>
+  <year>1990</year>
+  <manufacturer>Kaneko (Taito license)</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>galsnewj</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 0; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="galsnewj.zip|galsnew.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="pm110j.u87" crc="220b6df5" map="0001"/>
+      <part name="pm109j.u88" crc="17721444" map="0010"/>
+    </interleave>
+    <part repeat="0xc0000"> FF </part>
+    <interleave input="8" output="16">
+      <part name="pm005e.u85" crc="d7ec650c" map="0001"/>
+      <part name="pm004e.u86" crc="d3af52bc" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="pm001e.u73" crc="90433eb1" map="0001"/>
+      <part name="pm000e.u74" crc="5d220f3f" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="pm003e.u75" crc="6bb060fd" map="0001"/>
+      <part name="pm002e.u76" crc="713ee898" map="0010"/>
+    </interleave>
+    <part repeat="0x100000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="pm006e.u83" crc="a7555d9a"/>
+      <part name="pm206e.u82" crc="cc978baa"/>
+      <part name="pm018e.u94" crc="f542d708"/>
+    <part repeat="0x80000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="pm008j.u46" crc="f394670e"/>
+      <part name="pm007j.u47" crc="06780287"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+      <part name="pm013e.u89" crc="10f27b05"/>
+      <part name="pm014e.u90" crc="2f367106"/>
+      <part name="pm015e.u91" crc="a563f8ef"/>
+      <part name="pm016e.u92" crc="c0b9494c"/>
+  </rom>
+  <rom index="1"><part>00</part></rom>
+</misterromdescription>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Fantasia (940429 PCB, set 1)</name>
+  <uuid>DC166D26-885F-5B63-9E96-708BB8D53E93</uuid>
+  <mameversion>0289</mameversion>
+  <setname>fantasia</setname>
+  <parent></parent>
+  <year>1994</year>
+  <manufacturer>Comad &amp; New Japan System</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>fantasia</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 1; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="fantasia.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="16.pro2" crc="e27c6c57" map="0001"/>
+      <part name="13.pro1" crc="68d27413" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="9.fg_ind87" crc="2a588393" map="0001"/>
+      <part name="5.fg_ind83" crc="6160e0f0" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="8.fg_ind86" crc="f776b743" map="0001"/>
+      <part name="4.fg_ind82" crc="5df0dff2" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="7.fg_ind85" crc="5707d861" map="0001"/>
+      <part name="3.fg_ind81" crc="36cb811a" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="10.imag2" crc="1f14a395" map="0001"/>
+      <part name="6.imag1" crc="faf870e4" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="17.scr3" crc="aadb6eb7"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="2.music1" crc="22955efb"/>
+      <part name="1.music2" crc="4cd4d6c3"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <interleave input="8" output="16">
+      <part name="12.obj1" crc="4bd25be6" map="0001"/>
+      <part name="15.obj3" crc="46666768" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="11.obj2" crc="6d00a4c5" map="0001"/>
+      <part name="14.obj4" crc="4e7e6ed4" map="0010"/>
+    </interleave>
+  </rom>
+  <rom index="1"><part>01</part></rom>
+  <nvram index="2" size="100"/>
+</misterromdescription>

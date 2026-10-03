@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Hot Night</name>
+  <uuid>DDDA81F6-CDF3-5D12-A8AD-88007752BB3B</uuid>
+  <mameversion>0289</mameversion>
+  <setname>hotnight</setname>
+  <parent>newfant</parent>
+  <year>1994</year>
+  <manufacturer>Bulldog Amusements Inc.</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>hotnight</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 2; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="hotnight.zip|newfant.zip|fantsy95.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="12_prog2_4m_12.ue17" crc="30094b5c" map="0001"/>
+      <part name="7_prog1_4m_7.ud17" crc="64503285" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="10_i-scr2_4m_10.ue16b" crc="ab8756ff" map="0001"/>
+      <part name="5_i-scr1_4m_5.ue16a" crc="d8e2ef77" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="9_i-scr4_4m_9.ue15b" crc="4e52eb23" map="0001"/>
+      <part name="4_i-scr3_4m_4.ue15a" crc="797731f8" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="8_i-scr6_4m_8.ue14b" crc="6f8e5239" map="0001"/>
+      <part name="3_i-scr5_4m_3.ue14a" crc="85420e3f" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="11_i-scr8_4m_11.ue20b" crc="67006b4e" map="0001"/>
+      <part name="6_i-scr7_4m_6.ue20a" crc="8979ffaf" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="13_obj1_4m_13.u5" crc="832cd451"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="1_music1_4m_1.ub6" crc="3117e2ef"/>
+      <part name="2_music2_4m_2.uc6" crc="0c1109f9"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>02</part></rom>
+</misterromdescription>

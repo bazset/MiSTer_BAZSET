@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>WOW New Fantasia (Explicit)</name>
+  <uuid>09ABE993-0AF6-5A10-A7B5-9871187D0352</uuid>
+  <mameversion>0289</mameversion>
+  <setname>wownfant</setname>
+  <parent></parent>
+  <year>2002</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>wownfant</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 5; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="wownfant.zip|fantsia2.zip|missw02.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="ep-4001 42750001 u81.u81" crc="9942d200" map="0001"/>
+      <part name="ep-4001 42750001 u80.u80" crc="17359eeb" map="0010"/>
+    </interleave>
+    <interleave output="16">
+      <part name="ep-061 43750002 - 1.bin" crc="c318e841" map="21"/>
+    </interleave>
+    <interleave output="16">
+      <part name="ep-061 43750002 - 2.bin" crc="8871dc3a" map="21"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="ep-4001 42750001 u113.u113" crc="3e77ca1f"/>
+      <part name="ep-4001 42750001 u112.u112" crc="51f4b604"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="ep-4001 42750001 u4.u4" crc="06dc889e"/>
+      <part name="ep-4001 42750001 u1.u1" crc="864167c2"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>05</part></rom>
+</misterromdescription>
