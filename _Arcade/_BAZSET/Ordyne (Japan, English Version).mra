@@ -1,0 +1,99 @@
+﻿<misterromdescription>
+  <name>Ordyne (Japan, English Version)</name>
+  <setname>ordyneje</setname>
+  <year>1988</year>
+  <manufacturer>Namco</manufacturer>
+  <category>Shoot 'em up</category>
+  <rbf>Ordyne_bazset</rbf>
+  <players>2</players>
+  <joystick>8way</joystick>
+  <rotation>horizontal</rotation>
+  <resolution>288x224</resolution>
+  <region>Japan</region>
+  <rom index="0" zip="ordyne.zip" type="merged|nonmerged|split" md5="none">
+    <interleave output="16">
+      <part name="ordyneje/or1_mp0e.mpr0" crc="5e2f9052" map="01"/>
+      <part name="ordyneje/or1_mp1e.mpr1" crc="367a8fcf" map="10"/>
+    </interleave>
+    <part repeat="0xC0000">00</part>
+    <interleave output="16">
+      <part name="or1_sp0.spr0" crc="01ef6638" map="01"/>
+      <part name="or1_sp1.spr1" crc="b632adc3" map="10"/>
+    </interleave>
+    <part repeat="0xE0000">00</part>
+    <part name="or1_sd.snd0" crc="c41e5d22"/>
+    <part repeat="0xE0000">00</part>
+    <part name="sys2_c65b.3f" crc="e9f2922a"/>
+    <part repeat="0xF8000">00</part>
+    <part name="sys2mcpu.bin" crc="a342a97e" zip="ordyne.zip|namcoc65.zip"/>
+    <part repeat="0xFE000">00</part>
+    <!-- data ROM @ 0x500000: four mirrors then 1 MiB zero fill -->
+    <interleave output="16">
+      <part name="or1_d0.13s" crc="de214f7a" map="01"/>
+      <part name="or1_d1.13p" crc="25e3e6c8" map="10"/>
+    </interleave>
+    <interleave output="16">
+      <part name="or1_d0.13s" crc="de214f7a" map="01"/>
+      <part name="or1_d1.13p" crc="25e3e6c8" map="10"/>
+    </interleave>
+    <interleave output="16">
+      <part name="or1_d0.13s" crc="de214f7a" map="01"/>
+      <part name="or1_d1.13p" crc="25e3e6c8" map="10"/>
+    </interleave>
+    <interleave output="16">
+      <part name="or1_d0.13s" crc="de214f7a" map="01"/>
+      <part name="or1_d1.13p" crc="25e3e6c8" map="10"/>
+    </interleave>
+    <part repeat="0x100000">00</part>
+    <!-- sprite @ 0x700000: 4x replicated 32-bit lane blocks per bank -->
+    <interleave output="32"><part name="or_obj-3.obj3" crc="e0ad292c" map="0001"/><part name="or_obj-2.obj2" crc="a2c1cca0" map="0010"/><part name="or_obj-1.obj1" crc="8a54fa5e" map="0100"/><part name="or_obj-0.obj0" crc="67b2b9e4" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-3.obj3" crc="e0ad292c" map="0001"/><part name="or_obj-2.obj2" crc="a2c1cca0" map="0010"/><part name="or_obj-1.obj1" crc="8a54fa5e" map="0100"/><part name="or_obj-0.obj0" crc="67b2b9e4" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-3.obj3" crc="e0ad292c" map="0001"/><part name="or_obj-2.obj2" crc="a2c1cca0" map="0010"/><part name="or_obj-1.obj1" crc="8a54fa5e" map="0100"/><part name="or_obj-0.obj0" crc="67b2b9e4" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-3.obj3" crc="e0ad292c" map="0001"/><part name="or_obj-2.obj2" crc="a2c1cca0" map="0010"/><part name="or_obj-1.obj1" crc="8a54fa5e" map="0100"/><part name="or_obj-0.obj0" crc="67b2b9e4" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-7.obj7" crc="262b7112" map="0001"/><part name="or_obj-6.obj6" crc="e284c30c" map="0010"/><part name="or_obj-5.obj5" crc="e4025be9" map="0100"/><part name="or_obj-4.obj4" crc="7aefba59" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-7.obj7" crc="262b7112" map="0001"/><part name="or_obj-6.obj6" crc="e284c30c" map="0010"/><part name="or_obj-5.obj5" crc="e4025be9" map="0100"/><part name="or_obj-4.obj4" crc="7aefba59" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-7.obj7" crc="262b7112" map="0001"/><part name="or_obj-6.obj6" crc="e284c30c" map="0010"/><part name="or_obj-5.obj5" crc="e4025be9" map="0100"/><part name="or_obj-4.obj4" crc="7aefba59" map="1000"/></interleave>
+    <interleave output="32"><part name="or_obj-7.obj7" crc="262b7112" map="0001"/><part name="or_obj-6.obj6" crc="e284c30c" map="0010"/><part name="or_obj-5.obj5" crc="e4025be9" map="0100"/><part name="or_obj-4.obj4" crc="7aefba59" map="1000"/></interleave>
+    <!-- C123 tiles @ 0xB00000: each 0x20000 ROM mirrored x4 to 0x80000 -->
+    <part name="or_chr-0.chr0" crc="e7c47934"/><part name="or_chr-0.chr0" crc="e7c47934"/><part name="or_chr-0.chr0" crc="e7c47934"/><part name="or_chr-0.chr0" crc="e7c47934"/>
+    <part name="or_chr-1.chr1" crc="874b332d"/><part name="or_chr-1.chr1" crc="874b332d"/><part name="or_chr-1.chr1" crc="874b332d"/><part name="or_chr-1.chr1" crc="874b332d"/>
+    <part repeat="0x80000">00</part>
+    <part name="or_chr-3.chr3" crc="5471a834"/><part name="or_chr-3.chr3" crc="5471a834"/><part name="or_chr-3.chr3" crc="5471a834"/><part name="or_chr-3.chr3" crc="5471a834"/>
+    <part repeat="0x80000">00</part>
+    <part name="or_chr-5.chr5" crc="a7d3a296"/><part name="or_chr-5.chr5" crc="a7d3a296"/><part name="or_chr-5.chr5" crc="a7d3a296"/><part name="or_chr-5.chr5" crc="a7d3a296"/>
+    <part name="or_chr-6.chr6" crc="3adc09c8"/><part name="or_chr-6.chr6" crc="3adc09c8"/><part name="or_chr-6.chr6" crc="3adc09c8"/><part name="or_chr-6.chr6" crc="3adc09c8"/>
+    <part name="or2_chr7.chr7" crc="8c0d2ab7"/><part name="or2_chr7.chr7" crc="8c0d2ab7"/><part name="or2_chr7.chr7" crc="8c0d2ab7"/><part name="or2_chr7.chr7" crc="8c0d2ab7"/>
+    <!-- ROZ tiles @ 0xF00000 -->
+    <part name="or_roz-0.roz0" crc="c88a9e6b"/><part name="or_roz-0.roz0" crc="c88a9e6b"/><part name="or_roz-0.roz0" crc="c88a9e6b"/><part name="or_roz-0.roz0" crc="c88a9e6b"/>
+    <part name="or_roz-1.roz1" crc="c20cc749"/><part name="or_roz-1.roz1" crc="c20cc749"/><part name="or_roz-1.roz1" crc="c20cc749"/><part name="or_roz-1.roz1" crc="c20cc749"/>
+    <part name="or_roz-2.roz2" crc="148c9866"/><part name="or_roz-2.roz2" crc="148c9866"/><part name="or_roz-2.roz2" crc="148c9866"/><part name="or_roz-2.roz2" crc="148c9866"/>
+    <part name="or_roz-3.roz3" crc="4e727b7e"/><part name="or_roz-3.roz3" crc="4e727b7e"/><part name="or_roz-3.roz3" crc="4e727b7e"/><part name="or_roz-3.roz3" crc="4e727b7e"/>
+    <part name="or_roz-4.roz4" crc="17b04396"/><part name="or_roz-4.roz4" crc="17b04396"/><part name="or_roz-4.roz4" crc="17b04396"/><part name="or_roz-4.roz4" crc="17b04396"/>
+    <part repeat="0x180000">00</part>
+    <!-- tile mask @ 0x1300000 -->
+    <part name="or_shape.shape" crc="7aec9dee"/><part name="or_shape.shape" crc="7aec9dee"/><part name="or_shape.shape" crc="7aec9dee"/><part name="or_shape.shape" crc="7aec9dee"/>
+    <part repeat="0x80000">00</part>
+    <!-- C140 samples @ 0x1400000: ROM byte on even lane, zero on odd lane -->
+    <interleave output="16">
+      <part name="or_voi1.voice1" crc="369e0bca" map="01"/>
+      <part repeat="0x80000" map="10">00</part>
+    </interleave>
+    <interleave output="16">
+      <part name="or_voi2.voice2" crc="9f4cd7b5" map="01"/>
+      <part repeat="0x80000" map="10">00</part>
+    </interleave>
+  </rom>
+  <nvram index="2" size="8192"/>
+  <switches default="FF">
+    <dip bits="0" name="Video Display" ids="Normal,Frozen" values="1,0"/>
+    <dip bits="1" name="$2000-1" ids="H,L" values="1,0"/>
+    <dip bits="2" name="$2000-2" ids="H,L" values="1,0"/>
+    <dip bits="3" name="$2000-3" ids="H,L" values="1,0"/>
+    <dip bits="4" name="$2000-4" ids="H,L" values="1,0"/>
+    <dip bits="5" name="$2000-5" ids="H,L" values="1,0"/>
+    <dip bits="6" name="$2000-6" ids="H,L" values="1,0"/>
+    <dip bits="7" name="Service Mode" ids="Off,On" values="1,0"/>
+  </switches>
+  <buttons names="Shot,Bomb,-,-,-,-,Start,Coin,Pause,Service" default="A,B,-,-,-,-,Start,Select,R,L"/>
+</misterromdescription>
+
