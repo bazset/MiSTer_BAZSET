@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>New Fantasia (1995 copyright)</name>
+  <uuid>AD52E068-AB39-516F-986D-4D1AD6573D16</uuid>
+  <mameversion>0289</mameversion>
+  <setname>newfant</setname>
+  <parent></parent>
+  <year>1995</year>
+  <manufacturer>Comad &amp; New Japan System</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>newfant</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>rotate_ccw_90</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 2; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="newfant.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="prog2.12" crc="de43a457" map="0001"/>
+      <part name="prog1.07" crc="370b45be" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="iscr2.10" crc="4f2da2eb" map="0001"/>
+      <part name="iscr1.05" crc="63c6894f" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="iscr4.09" crc="725741ec" map="0001"/>
+      <part name="iscr3.04" crc="51d6b362" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="iscr6.08" crc="178b2ef3" map="0001"/>
+      <part name="iscr5.03" crc="d2b5c5fa" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="iscr8.11" crc="f4148528" map="0001"/>
+      <part name="iscr7.06" crc="2dee0c31" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="nf95obj1.13" crc="e6d1bc71"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="musc1.01" crc="10347fce"/>
+      <part name="musc2.02" crc="b9646a8c"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>02</part></rom>
+</misterromdescription>

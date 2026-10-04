@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Super Miss World</name>
+  <uuid>1BE945C9-FB73-53EA-A1A5-BF44AA3983F1</uuid>
+  <mameversion>0289</mameversion>
+  <setname>smissw</setname>
+  <parent></parent>
+  <year>1996</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>smissw</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 4; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="smissw.zip|missw96.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="10_prog2.ue17" crc="e99e520f" map="0001"/>
+      <part name="6_prog1.ud17" crc="22831657" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="9_im1-b.ue16b" crc="fff1eee4" map="0001"/>
+      <part name="5_im1-a.ue16a" crc="2134a72d" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="8_im2-b.ue15b" crc="cf44b638" map="0001"/>
+      <part name="4_im2-a.ue15a" crc="d22b270f" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="7_im3-b.ue14b" crc="12a9441d" map="0001"/>
+      <part name="3_im3-a.ue14a" crc="8c656fc9" map="0010"/>
+    </interleave>
+    <part repeat="0x100000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="15_obj11.u5" crc="3983152f"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="1_music1.ub6" crc="e78a659e"/>
+      <part name="2_music2.uc6" crc="60fa0c00"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>04</part></rom>
+</misterromdescription>

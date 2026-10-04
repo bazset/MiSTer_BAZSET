@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Super Model II</name>
+  <uuid>07E8D063-BB23-561F-B2AC-85D8BB908E4E</uuid>
+  <mameversion>0289</mameversion>
+  <setname>supmodl2</setname>
+  <parent></parent>
+  <year>1997</year>
+  <manufacturer>Comad</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>4way</joystick>
+  <filename>supmodl2</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Start,Coin,Service,Tilt,Pause" default="A,B,Start,Select,R,L,X" count="2"/>
+  <!-- board mode 6; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="supmodl2.zip|fantsia2.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="12_prog2.ue17" crc="9107f65d" map="0001"/>
+      <part name="7_prog1.ud17" crc="0d9253a7" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="11_i-scr2.ue16b" crc="b836c1f3" map="0001"/>
+      <part name="6_i-scr1.ue16a" crc="d56cac96" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="10_i-scr4.ue15b" crc="aa85a247" map="0001"/>
+      <part name="5_i-scr3.ue15a" crc="3e9bd17a" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="9_i-scr6.ue14b" crc="d21355dc" map="0001"/>
+      <part name="4_i-scr5.ue14a" crc="d1c9155c" map="0010"/>
+    </interleave>
+    <interleave input="8" output="16">
+      <part name="8_i-scr8.ue20b" crc="7ffe761e" map="0001"/>
+      <part name="3_i-scr7.ue20a" crc="d2bb19ef" map="0010"/>
+    </interleave>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="13_obj1.u5" crc="52e6872a"/>
+      <part name="14_obj2.u4" crc="ea6e3861"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="1_music1.ub6" crc="23cc4f9c"/>
+      <part name="2_music2.uc6" crc="864167c2"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>06</part></rom>
+</misterromdescription>

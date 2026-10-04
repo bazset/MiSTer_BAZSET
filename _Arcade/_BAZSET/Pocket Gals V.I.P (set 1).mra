@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misterromdescription>
+  <name>Pocket Gals V.I.P (set 1)</name>
+  <uuid>20114514-D71F-5813-9371-E23B277E57BA</uuid>
+  <mameversion>0289</mameversion>
+  <setname>pgalvip</setname>
+  <parent></parent>
+  <year>1996</year>
+  <manufacturer>ACE International / Afega</manufacturer>
+  <category>Puzzle / Adult</category>
+  <players>2</players>
+  <joystick>8way</joystick>
+  <filename>pgalvip</filename>
+  <rbf>EXPRO02_bazset</rbf>
+  <resolution>256x224</resolution>
+  <rotation>horizontal</rotation>
+  <buttons names="Shot,Shot 2,Button 3,Start,Coin,Pause" default="A,B,X,Start,Select,Y" count="3"/>
+  <!-- board mode 7; fixed index-0 image = 0xB00000 bytes -->
+  <rom index="0" zip="pgalvip.zip|galhustl.zip">
+    <!-- main/program+bitmap data: fixed slot 0x500000 bytes -->
+    <interleave input="8" output="16">
+      <part name="afega_15.ue17" crc="050060ca" map="0001"/>
+      <part name="afega_16.ud17" crc="d32e4052" map="0010"/>
+    </interleave>
+    <part repeat="0x1c0000"> FF </part>
+    <interleave input="8" output="16">
+      <part name="afega_13.rob1" crc="ac51ef72" map="0001"/>
+      <part name="afega_14.roa1" crc="0877c00f" map="0010"/>
+    </interleave>
+    <part repeat="0x200000"> FF </part>
+    <!-- Kaneko sprite ROM: fixed slot 0x200000 bytes -->
+      <part name="afega_17.u5" crc="a8a50745"/>
+    <part repeat="0x180000"> FF </part>
+    <!-- MSM6295 samples: fixed slot 0x200000 bytes -->
+      <part name="afega_12.ub6" crc="d32a6c0c"/>
+    <part repeat="0x60000"> FF </part>
+      <part name="afega_11.uc6" crc="2168e54a"/>
+    <part repeat="0x100000"> FF </part>
+    <!-- VIEW2 raw/encrypted tiles: fixed slot 0x200000 bytes -->
+    <part repeat="0x200000"> FF </part>
+  </rom>
+  <rom index="1"><part>07</part></rom>
+</misterromdescription>
