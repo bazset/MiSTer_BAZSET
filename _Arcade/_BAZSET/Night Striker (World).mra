@@ -1,0 +1,110 @@
+<!--
+Night Striker (Taito, 1989). Taito Z System road-game subclass:
+2x 68000 @12MHz (A: game/video, B: road) + Z80/YM2610 sound (B91 board)
++ TC0100SCN + TC0110PCR (xBGR555) + TC0150ROD road + chasehq-class 16x16
+zoom sprites (OBJ A + OBJ B, STY spritemap) + TC0220IOC + ADC0809 yoke
++ motor/lamp outputs (moving cockpit).
+
+Requires nightstr.zip (World set; b91-47 present; US = b91-46).
+
+Stream layout (the RTL's SDRAM base addresses must mirror this):
+    0x000000  main 68000 program   512KB  (2x ROM_LOAD16_BYTE pairs)
+    0x080000  sub 68000 program    256KB  (ROM_LOAD16_BYTE pair)
+    0x0C0000  Z80 sound program    128KB  (flat)
+    0x0E0000  TC0100SCN tile ROM   512KB  (ROM_LOAD16_WORD_SWAP, single file)
+    0x160000  sprites OBJ A          2MB  (ROM_LOAD64_WORD_SWAP x4)
+    0x360000  TC0150ROD road       512KB  (ROM_REGION16_LE, flat)
+    0x3E0000  sprites OBJ B          2MB  (ROM_LOAD64_WORD_SWAP x4)
+    0x5E0000  spritemap (STY)      512KB  (ROM_REGION16_LE, flat)
+    0x660000  ADPCM-A samples        1MB  (flat, b91-13 + b91-12)
+    0x760000  ADPCM-B samples      512KB  (flat)
+    0x7E0000  priority PROMs        512B  (b91-32 road A/B internal priority,
+                                           b91-33 road/sprite priority + palette
+                                           select; MAME ignores both - its
+                                           nightstr IMPERFECT_GRAPHICS flag is
+                                           exactly this. The core loads them so
+                                           the tunnel-priority logic can use the
+                                           real silicon truth.)
+    0x7E0200  end (8.0008 MB)
+
+Interleave maps are derived from MAME 0.289 romload.cpp group-load semantics
+under mra_build.py's hardware-verified right-to-left digit order, and
+byte-verified by assembling this file with Rainbow_Islands/tools/mra_build.py
+and comparing against scripts/build_nightstr_flat.py output
+(sim/roms/nightstr_flat.bin, SHA1-checked against the driver).
+-->
+<misterromdescription>
+    <rbf>Night_Striker_bazset</rbf>
+    <name>Night Striker (World)</name>
+    <setname>nightstr</setname>
+    <year>1989</year>
+    <manufacturer>Taito</manufacturer>
+    <about author="bazset" source="https://github.com/bazset" patreon="https://www.patreon.com/cw/bazset"/>
+    <players>1</players>
+    <joystick>8way</joystick>
+    <buttons count="2"/>
+    <rotation>horizontal</rotation>
+    <region>World</region>
+
+    <rom index="0" zip="nightstr.zip" type="merged" md5="none">
+
+        <!-- maincpu low half 0x00000-0x3FFFF: b91-45 (even), b91-44 (odd) -->
+        <interleave output="16">
+            <part name="b91-45.bin" crc="7ad63421" map="01"/>
+            <part name="b91-44.bin" crc="4bc30adf" map="10"/>
+        </interleave>
+        <!-- maincpu high half 0x40000-0x7FFFF: b91-43 (even), b91-47 (odd) -->
+        <interleave output="16">
+            <part name="b91-43.bin" crc="3e6f727a" map="01"/>
+            <part name="b91-47.bin" crc="9f778e03" map="10"/>
+        </interleave>
+
+        <!-- sub 68000 0x00000-0x3FFFF: b91-39 (even), b91-40 (odd) -->
+        <interleave output="16">
+            <part name="b91-39.bin" crc="725b23ae" map="01"/>
+            <part name="b91-40.bin" crc="81fb364d" map="10"/>
+        </interleave>
+
+        <!-- audiocpu: Z80 program, flat -->
+        <part name="b91-41.bin" crc="2694bb42"/>
+
+        <!-- tc0100scn: single ROM_LOAD16_WORD_SWAP file -->
+        <interleave output="16">
+            <part name="b91-11.bin" crc="fff8ce31" map="12"/>
+        </interleave>
+
+        <!-- sprites OBJ A: b91-04@0, b91-03@2, b91-02@4, b91-01@6 -->
+        <interleave output="64">
+            <part name="b91-04.bin" crc="8ca1970d" map="00000012"/>
+            <part name="b91-03.bin" crc="cd5fed39" map="00001200"/>
+            <part name="b91-02.bin" crc="457c64b8" map="00120000"/>
+            <part name="b91-01.bin" crc="3731d94f" map="12000000"/>
+        </interleave>
+
+        <!-- tc0150rod road lines: ROM_REGION16_LE / ROM_LOAD16_WORD, flat -->
+        <part name="b91-10.bin" crc="1d8f05b4"/>
+
+        <!-- sprites OBJ B: b91-08@0, b91-07@2, b91-06@4, b91-05@6 -->
+        <interleave output="64">
+            <part name="b91-08.bin" crc="66f35c34" map="00000012"/>
+            <part name="b91-07.bin" crc="4d8ec6cf" map="00001200"/>
+            <part name="b91-06.bin" crc="a34dc839" map="00120000"/>
+            <part name="b91-05.bin" crc="5e72ac90" map="12000000"/>
+        </interleave>
+
+        <!-- spritemap (STY): ROM_REGION16_LE / ROM_LOAD16_WORD, flat -->
+        <part name="b91-09.bin" crc="5f247ca2"/>
+
+        <!-- ADPCM-A: b91-13 @0, b91-12 @0x80000 -->
+        <part name="b91-13.bin" crc="8c7bf0f5"/>
+        <part name="b91-12.bin" crc="da77c7af"/>
+
+        <!-- ADPCM-B -->
+        <part name="b91-14.bin" crc="6bc314d3"/>
+
+        <!-- priority PROMs (see header note) -->
+        <part name="b91-32.bin" crc="fbf81f30"/>
+        <part name="b91-33.bin" crc="89719d17"/>
+
+    </rom>
+</misterromdescription>
