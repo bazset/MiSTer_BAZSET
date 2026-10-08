@@ -1,6 +1,31 @@
-﻿<misterromdescription>
+<!--
+Rainbow Islands (Taito, 1987)
+
+Requires both rbisland.zip and cchip.zip. The C chip's 4KB internal mask ROM
+(cchip_upd78c11.bin) is a shared MAME device ROM and lives in cchip.zip; the
+8KB game specific EPROM (cchip_b22-15.53) is inside rbisland.zip.
+
+All regions are concatenated into a single stream that the core splits by
+address:
+
+    0x000000  68000 program    512KB
+    0x080000  Z80 program      112KB
+    0x09C000  PC080SN tiles    512KB
+    0x11C000  PC090OJ sprites  640KB
+    0x1BC000  C chip ROMs      12KB
+
+NO YM SCRIPT BLOB. This file used to carry a ~500KB generated YM2151 register
+capture, because the core could not make sound and replayed captured music
+instead. The real sound path works again (SOUND_SCRIPTS = 0 in Rbisland.sv,
+after the PC060HA read timing fix - see doc/DEBUG_JOURNAL.md section 1.4), so
+the blob is gone and the stream simply ends after the C chip ROMs.
+
+ROM names, CRCs and DIP definitions follow MAME's src/mame/taito/rbisland.cpp
+and src/mame/taito/taitocchip.cpp.
+-->
+<misterromdescription>
 <rbf>RainbowIslands_bazset</rbf>
-    <name>Rainbow Islands (World, rev 2, set 1 bazset)</name>
+    <name>Rainbow Islands (World, rev 2, set 1)</name>
     <setname>rbisland</setname>
     <year>1987</year>
     <manufacturer>Taito</manufacturer>
@@ -11,6 +36,7 @@
 
     <rom index="0" zip="rbisland.zip|cchip.zip" type="merged" md5="none">
 
+        <!-- 68000 program. Even offset takes the high byte of each word. -->
         <interleave output="16">
             <part name="b22-10-1.19" crc="e34a50ca" map="01"/>
             <part name="b22-11-1.20" crc="6a31a093" map="10"/>
@@ -24,23 +50,51 @@
             <part name="b22-04.24" crc="91625e7f" map="10"/>
         </interleave>
 
+        <!-- Z80 program. One 64KB chip split either side of a 0xC000 gap.
+             The gap is filled with 00 because sound bank 0 maps onto its
+             tail, and 00 is NOP on a Z80 where FF would be RST 38h. -->
         <part name="b22-14.43" crc="113c1a5b" offset="0" length="0x4000"/>
         <part repeat="0xC000">00</part>
         <part name="b22-14.43" crc="113c1a5b" offset="0x4000" length="0xC000"/>
 
+        <!-- PC080SN tiles, delivered raw. The word byte swap MAME applies
+             with ROM_LOAD16_WORD_SWAP is performed in the core instead. -->
         <part name="b22-01.2" crc="b76c9168"/>
 
+        <!-- PC090OJ sprites. Only the first 512KB is word swapped in MAME;
+             the final 128KB is a plain even/odd interleave. -->
         <part name="b22-02.5" crc="1b87ecf0"/>
         <interleave output="16">
             <part name="b22-13.6" crc="2fda099f" map="01"/>
             <part name="b22-12.7" crc="67a76dc6" map="10"/>
         </interleave>
 
+        <!-- C chip: internal mask ROM then game specific EPROM. -->
         <part name="cchip_upd78c11.bin" crc="43021521"/>
         <part name="cchip_b22-15.53" crc="08c588a6"/>
 
         </rom>
 
+    <!-- HIGH SCORE NVRAM.
+         Loading is automatic when the framework supplies this region. Saving
+         is manual through the b01 OSD's SAVE HIGHSCORE command. The RTL side
+         uses ioctl_upload / ioctl_din / ioctl_upload_req and
+         rtl/hiscore_nvram.sv; without this block the framework has no file to
+         stream in or write back.
+
+         index MUST be 2, matching .ioctl_upload_index(8'd2) in Rbisland.sv.
+
+         size MUST equal `CFG_HS_TOTAL(`GAME_RAINBOW) in rtl/game_config.svh,
+         which is 54 = 0x32 + 0x04. That is TWO discontiguous blocks packed
+         back to back, not one 54-byte window - from MAME's hiscore.dat:
+             @:maincpu,program,10d0cc,32,00,32
+             @:maincpu,program,10e1f2,04,00,00
+         The ~4.3KB between them is live work RAM; saving the span would work
+         but RESTORING it would stamp stale state over a running game, which
+         is why hiscore_nvram.sv walks two ranges.
+
+         NOT ADDED TO THE EXTRA VERSION .mra, and that is deliberate - see
+         the note there before copying this block across. -->
     <nvram index="2" size="54"/>
 
     <switches default="fe,bf" base="16">
