@@ -24,7 +24,7 @@ ROM names, CRCs and DIP definitions follow MAME's src/mame/taito/rbisland.cpp
 and src/mame/taito/taitocchip.cpp.
 -->
 <misterromdescription>
-<rbf>RainbowIslands_bazset</rbf>
+<rbf>RainbowIslands_bazset._20261008</rbf>
     <name>Rainbow Islands (World, rev 2, set 1)</name>
     <setname>rbisland</setname>
     <year>1987</year>
