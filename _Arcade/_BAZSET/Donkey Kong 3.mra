@@ -1,9 +1,3 @@
-<!-- BAZSET CORE: Donkey Kong 3 CRT (Coin/Select mapping test)
-RBF FILE: Arcade-DonkeyKong3CRT.rbf
-REQUIRED ROM ZIP FILE(S): dkong3.zip
-MRA supplies configurable game button names. Coin defaults to Select, Start 2P to R.
-This ZIP reuses the exact original B01 RBF; no FPGA logic has been rebuilt.
--->
 <misterromdescription>
 
 	<name>Donkey Kong 3 (BAZSET CRT)</name>
