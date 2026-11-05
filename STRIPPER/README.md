@@ -1,4 +1,4 @@
-# STRIPPER MiSTer v0.1 — native RBF catalogue scanner
+# STRIPPER MiSTer v0.2 — native RBF catalogue scanner and future updater hooks
 
 STRIPPER is now a **MiSTer Linux shell script**, not a Windows program. It scans
 `_Arcade/cores` by filename and SHA-256 **without decoding RBFs**.
@@ -11,6 +11,10 @@ Extract the ZIP into your MiSTer SD card root so these paths exist:
 - `/media/fat/Scripts/STRIPPER/catalog.tsv`
 - `/media/fat/Scripts/STRIPPER/beta_families.txt`
 - `/media/fat/Scripts/STRIPPER/catalog.local.tsv`
+- `/media/fat/Scripts/STRIPPER/ui.sh` (progress bar and download heartbeat)
+- `/media/fat/Scripts/STRIPPER/hooks.sh` (future update features)
+- `/media/fat/Scripts/STRIPPER/update_hooks.conf` (both future updates OFF)
+- `/media/fat/Scripts/STRIPPER/unlockable.tsv` (empty until verified)
 
 Run **STRIPPER** from MiSTer's Scripts menu to access the text menu.
 From SSH / terminal: `sh /media/fat/Scripts/STRIPPER.sh scan`.
@@ -26,7 +30,7 @@ To list known entries: `sh /media/fat/Scripts/STRIPPER.sh list`.
 3. Family name match but unknown hash => report unrecognized version.
 4. Unknown/unlisted name => skip in fast mode; check with `scan --all`.
 
-There is **no automatic access-control bypass and no RBF patching** in v0.1.
+There is **no automatic access-control bypass and no RBF patching** in v0.2.
 Being listed as a beta family does not prove that the precise RBF includes
 an active key circuit. Likewise, an unknown version might still require a key.
 
@@ -48,6 +52,25 @@ Maintain the local file by appending tab-separated lines in this format:
 A hash tells STRIPPER which exact bitstream it has found; it does **not**
 provide a key or an unlock recipe. Do not label a lock as confirmed without
 a separate source/hardware verification.
+
+## Planned unlocked output layout
+
+The PC-only staging tests now generate:
+- `_Test/_Arcade/cores/jtcps3_unlocked.rbf` from an independently verified changed candidate.
+- `_Test/_Arcade/_Stripped/JoJo's Venture (unlocked).mra`, etc.
+
+For the final MiSTer design, `_Test` is omitted and the same relative paths
+start at `/media/fat/_Arcade/`. The original MRAs/cores are never overwritten.
+A `(unlocked)` label is only an output naming convention: it does not prove
+that controls work. Real CPS3 RBF modification is still unimplemented.
+
+## Future GitHub update hooks
+
+- `SCRIPT_VERSION_CHECK_ENABLED=0`: may eventually check a published script-version feed.
+- `UNLOCKABLE_FEED_ENABLED=0`: may eventually retrieve a list of independently
+  verified patchable exact RBF versions.
+- Both checks are **disabled by default**, and there is NO auto script install.
+- Existing catalogue `update` is available and prints live progress/heartbeat.
 
 ### Development and validation
 
