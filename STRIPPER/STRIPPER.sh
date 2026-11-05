@@ -1,8 +1,8 @@
 #!/bin/sh
-# STRIPPER native MiSTer scanner v0.1. Catalog-driven; no RBF modifications.
+# STRIPPER native MiSTer scanner v0.2. Catalog-driven; no RBF modifications.
 set -eu
 
-VERSION=0.1
+VERSION=0.2
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 DATA_DIR=${STRIPPER_DATA_DIR:-"$SCRIPT_DIR/STRIPPER"}
 CATALOG="$DATA_DIR/catalog.tsv"
@@ -11,6 +11,9 @@ FAMILIES="$DATA_DIR/beta_families.txt"
 CATALOG_URL=${STRIPPER_CATALOG_URL:-https://raw.githubusercontent.com/bazset/MiSTer_BAZSET/main/STRIPPER/catalog.tsv}
 FAMILIES_URL=https://raw.githubusercontent.com/jotego/jtcores/master/.beta.yaml
 CORES_DEFAULT=${STRIPPER_CORES_DIR:-/media/fat/_Arcade/cores}
+# Installed into Scripts/STRIPPER; checked locally before any network operations.
+. "$DATA_DIR/ui.sh"
+. "$DATA_DIR/hooks.sh"
 
 say() { printf '%s\n' "$*"; }
 fail() { printf 'STRIPPER ERROR: %s\n' "$*" >&2; exit 1; }
@@ -50,19 +53,22 @@ update_catalogue() {
     t2=$(mktemp "$DATA_DIR/.upstream.XXXXXX") || fail "Cannot create temporary file"
     t3=$(mktemp "$DATA_DIR/.families.XXXXXX") || fail "Cannot create temporary file"
     trap 'rm -f "$t1" "$t2" "$t3"' 0 1 2 15
-    say "Updating exact-hash catalogue from GitHub..."
-    fetch "$CATALOG_URL" "$t1" || fail "Catalogue download failed; existing files preserved"
+    progress_step 1 4 "Downloading the RBF catalogue"
+    fetch_with_feedback "RBF catalogue" "$CATALOG_URL" "$t1" || fail "Catalogue download failed; existing files preserved"
+    progress_step 2 4 "Validating the downloaded catalogue"
     [ "$(wc -c < "$t1")" -le 524288 ] || fail "Catalogue too large; refusing update"
     validate_catalog "$t1" || fail "Invalid catalogue format; existing files preserved"
-    say "Updating beta-family list from Jotego GitHub..."
-    fetch "$FAMILIES_URL" "$t2" || fail "Jotego list download failed; existing files preserved"
+    progress_step 3 4 "Downloading the Jotego beta-family list"
+    fetch_with_feedback "Jotego family list" "$FAMILIES_URL" "$t2" || fail "Jotego list download failed; existing files preserved"
     [ "$(wc -c < "$t2")" -le 524288 ] || fail "Upstream list too large; refusing update"
     awk '/^[a-z0-9_]+:[[:space:]]*\[/ && /mister/ {split($0,f,":"); print "jt" f[1] ".rbf"}' "$t2" |
         sort -u > "$t3"
     awk '/^jt[a-z0-9_]+[.]rbf$/ {good++; next} {bad=1} END {if(bad || good<1) exit 1}' "$t3" ||
         fail "Unexpected upstream format; existing files preserved"
+    progress_step 4 4 "Saving verified metadata to local storage"
     mv -f "$t1" "$CATALOG"
     mv -f "$t3" "$FAMILIES"
+    progress_bar 4 4 "GitHub metadata refresh finished"
     say "UPDATE OK: downloaded $(awk -F '\t' '!/^#/ && NF==4 {n++} END{print n+0}' "$CATALOG") exact hashes and $(awk 'NF && !/^#/ {n++} END{print n+0}' "$FAMILIES") upstream beta families."
     say "Your personal catalog.local.tsv is preserved. No RBF was changed."
 }
@@ -86,6 +92,14 @@ scan() {
     say "Scanning: $cores"
     say "Mode: $([ "$full" -eq 1 ] && printf 'all-hashes' || printf 'fast: listed names only')"
     say "-----------------------------------------------"
+    progress_step 1 2 "Counting available RBF files"
+    file_count=0
+    for f in "$cores"/*.rbf "$cores"/*.RBF; do
+        [ -f "$f" ] || continue
+        file_count=$((file_count+1))
+    done
+    progress_step 2 2 "Identifying cores against local SHA-256 catalogue"
+    progress_bar 0 "$file_count" "Starting RBF inspection"
     total=0; matched=0; candidates=0; skipped=0
     for f in "$cores"/*.rbf "$cores"/*.RBF; do
         [ -f "$f" ] || continue
@@ -98,8 +112,10 @@ scan() {
         if catalogue_name "$lower"; then named=1; fi
         if [ "$full" -eq 0 ] && [ "$listed" -eq 0 ] && [ "$named" -eq 0 ]; then
             skipped=$((skipped+1))
+            progress_bar "$total" "$file_count" "Skipped unrelated: $name"
             continue
         fi
+        say "  Checking SHA-256 for $name..."
         sum=$(sha256sum "$f" | awk '{print tolower($1)}')
         entry=$(catalogue_hash "$sum")
         if [ -n "$entry" ]; then
@@ -117,6 +133,7 @@ scan() {
         else
             printf 'NOT IN CATALOGUE: %s\n' "$name"
         fi
+        progress_bar "$total" "$file_count" "Inspected: $name"
     done
     say "-----------------------------------------------"
     say "Total RBFs: $total; exact catalogue hashes: $matched; beta-family unknown versions: $candidates; fast-skipped: $skipped"
@@ -140,6 +157,8 @@ status() {
     say "Hash entries: $(awk -F '\t' 'NF==4 && !/^#/ {n++} END {print n+0}' "$CATALOG" "$LOCAL")"
     say "Upstream MiSTer beta families: $(awk 'NF && !/^#/ {n++} END {print n+0}' "$FAMILIES")"
     say "Update endpoint: $CATALOG_URL"
+    say "Output plan: _Arcade/_Stripped/*.mra and _Arcade/cores/*_unlocked.rbf"
+    future_hooks_status
     say "Mode: detection/report only. No FPGA patch implemented."
 }
 menu() {
