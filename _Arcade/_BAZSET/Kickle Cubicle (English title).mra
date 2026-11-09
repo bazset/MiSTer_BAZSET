@@ -9,7 +9,7 @@ MAME original Japanese arcade ROM set kikcubic, no ROM redistribution.
 <misterromdescription>
     <about author="BAZSET (based on Jotego FPGA source)" webpage="https://patreon.com/c/bazset" source="https://github.com/jotego/jtcores"/>
     <rotation>horizontal</rotation>
-    <name>Kickle Cubicle (English title - Japan ROM)</name>
+    <name>Kickle Cubicle (English B03 Repair Test)</name>
     <setname>kikcubic</setname>
     <mameversion>0289</mameversion>
     <year>1988</year>
@@ -17,7 +17,7 @@ MAME original Japanese arcade ROM set kikcubic, no ROM redistribution.
     <players>2</players>
     <rbf>kickle</rbf>
     <joystick>4</joystick>
-    <region>Japan</region>
+    <region>English title and text (FPGA)</region>
     <rom index="0" zip="kikcubic.zip" md5="None">
         <!-- maincpu - starts at 0x0 - length 0x30000 (18 bits) -->
         <part name="mqj_a-p0-.ic4" crc="9cef394a"/>
@@ -48,7 +48,7 @@ MAME original Japanese arcade ROM set kikcubic, no ROM redistribution.
     <rom index="1">
         <part>00 59</part>
     </rom>
-    <switches page_id="1" page_name="Switches" base="16" default="ff,d5">
+    <switches page_id="1" page_name="Switches" base="16" default="ff,d5,00">
         <DSW1/>
         <dip name="Difficulty" bits="0,1" ids="Hardest,Hard,Easy,Medium"/>
         <dip name="Lives" bits="2,3" ids="4,2,1,3"/>
@@ -61,6 +61,6 @@ MAME original Japanese arcade ROM set kikcubic, no ROM redistribution.
         <dip name="Level Select" bits="13" ids="On,Off"/>
         <dip name="Player Adding" bits="14" ids="On,Off"/>
         <dip name="Service Mode" bits="15" ids="On,Off"/>
-    </switches>
+            </switches>
     <buttons names="Button 1, Button 2,Start,Coin,Core credits" default="A,B,Start,Select,-" count="2"/>
 </misterromdescription>
