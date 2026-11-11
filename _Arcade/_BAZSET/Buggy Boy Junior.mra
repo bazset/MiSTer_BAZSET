@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<misterromdescription>
+  <about source="B756 genuine MAME pedal ramp, legacy slots 6/7/8; no steering prompts" />
+  <rotation>horizontal</rotation>
+  <name>Buggy Boy Junior</name>
+  <setname>buggyboyjr</setname>
+  <mameversion>0289</mameversion>
+  <year>1985</year>
+  <manufacturer>Tatsumi</manufacturer>
+  <players>1</players>
+  <rbf>Arcade-BuggyBoyJunior</rbf>
+  <region>World</region>
+  <rom index="0" zip="buggyboyjr.zip|buggyboy.zip">
+    <interleave output="16">
+      <part name="bug1a.214" crc="92797c25" map="01" />
+      <part name="bug4a.175" crc="40ce3930" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="bug2s.213" crc="abcc8ad2" map="01" />
+      <part name="bug5s.174" crc="5e352d8d" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="bug8s.26" crc="efd66282" map="01" />
+      <part name="bug7s.25" crc="bd75b5eb" map="10" />
+    </interleave>
+    <part name="bug34s.46" crc="8ea8fec4" />
+    <part name="bug33s.47" crc="459c2b03" />
+    <part name="bug35s.21" crc="65d9af57" />
+    <interleave output="16">
+      <part name="bug9.138" crc="7d84135b" map="01" />
+      <part name="bug10.95" crc="b518dd6f" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="bb1.163" crc="0ddbd36d" map="01" />
+      <part name="bb2.162" crc="71d47de1" map="10" />
+    </interleave>
+    <part name="bb10.41" crc="f2368398" />
+    <part name="bb11.40" crc="bf77f624" />
+    <part name="bb12.39" crc="10a2e8d1" />
+    <part name="bb13.42" crc="40d10dfa" />
+    <part name="bug26s.147" crc="14033710" />
+    <part name="bug19s.144" crc="838e0697" />
+    <part name="bug28s.146" crc="8b47d227" />
+    <part name="bug21s.143" crc="876a5666" />
+    <part name="bug30s.145" crc="11d8e2a8" />
+    <part name="bug23s.142" crc="015db5d8" />
+    <part name="bug11s.225" crc="771af4e1" />
+    <part name="bb3s.195" crc="2ab3d5ff" />
+    <part name="bb4s.193" crc="630f68a4" />
+    <part name="bb5s.194" crc="65925c9e" />
+    <part name="bb6.224" crc="ad43e02a" />
+    <part name="bug16s.139" crc="1903a9ad" />
+    <part name="bug17s.140" crc="82cabdd4" />
+    <part name="bug13.32" crc="53604d7a" />
+    <part name="bug18s.141" crc="67786327" />
+    <part name="bb14.19" crc="0b821e0b" />
+    <part name="bb9.190" crc="6fc807d1" />
+    <part name="bb9.162" crc="6fc807d1" />
+    <part name="bb8.31" crc="2330ff4f" />
+    <part name="bb7.188" crc="b57b609f" />
+  </rom>
+  <joystick/>
+  <buttons names="-,-,Accelerator,Brake,Gear,-,Credit" default="X,Y,L,Select" count="5" />
+  <switches default="5f,0f,ff,ff">
+    <dip name="Language" bits="2" ids="Japanese,English" />
+    <dip name="Time Rank" bits="4,5" ids="A (Longest),B,C,D (Shortest)" />
+    <dip name="Game Rank" bits="6,7" ids="A (Easy),B,C,D (Difficult)" />
+    <dip name="Coin B" bits="11,12" ids="2 Coins/1 Credit,1 Coin/5 Credits,1 Coin/4 Credits,1 Coin/6 Credits" />
+    <dip name="Coin A" bits="13,14,15" ids="1 Coin/1 Credit,2 Coins/1 Credit,3 Coins/1 Credit,1 Coin/2 Credits,1 Coin/5 Credits,1 Coin/6 Credits,2 Coins/3 Credits,Free-Play" />
+  </switches>
+</misterromdescription>
