@@ -60,7 +60,7 @@
     <part name="bb7.188" crc="b57b609f" />
   </rom>
   <joystick/>
-  <buttons names="-,-,Accelerator,Brake,Gear,-,Credit" default="X,Y,L,Select" count="5" />
+  <buttons names="-,-,Accelerator,Brake,Gear,-,Credit" default="A,B,X,Select" count="5" />
   <switches default="5f,0f,ff,ff">
     <dip name="Language" bits="2" ids="Japanese,English" />
     <dip name="Time Rank" bits="4,5" ids="A (Longest),B,C,D (Shortest)" />
