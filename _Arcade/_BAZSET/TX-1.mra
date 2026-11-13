@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TX-1 original WORLD arcade B01: B09 working game and fixed gear; CRT position, USB spinner and Buffalo pad. -->
+<!-- B01 built from the working B09; retains native RGB T305 road-copy recovery, T296 HDMI
+     retimed output, T278 synchronous real original V30 M10K decoder, 3 original CPUs. -->
+<!-- WARNING: CPU/HDMI/reset formal timing closure pending; gameplay baseline owner approved.
+     NOT VERIFIED. EXPERIMENTAL TEST, do not overwrite your working B08 MRA. -->
+<!-- Starts ONE centre screen by default, three seamless HDMI only on manual OSD opt-in. -->
+<!-- ROM supplied by owner from original 43-chip tx1.zip. No ROM in ZIP. -->
+<misterromdescription>
+  <about source="TX-1 World (B01) working B09 original arcade CPU+video/audio and freeze recovery; corrected LOW/HIGH gear HUD only; one centre screen startup, opt-in seamless HDMI 3screen, CRT centre, 7 controls, original 43 chip World ROM and 4KB NVRAM" />
+  <rotation>horizontal</rotation>
+  <name>TX-1 World (B01 CRT SPINNER BUFFALO TEST)</name>
+  <setname>tx1</setname>
+  <year>1983</year>
+  <manufacturer>Tatsumi</manufacturer>
+  <players>1</players>
+  <rbf>Arcade-TX1</rbf>
+  <region>World</region>
+  <buttons names="Accelerator,Brake,Gear,Service,Credit,Start,Coin 2" default="A,B,X,R,Select,Start,L" count="7" />
+  <nvram index="2" size="4096" />
+  <rom index="0" zip="tx1.zip">
+    <interleave output="16">
+      <part name="8412-136027-244.22" crc="2e9cefa2" map="01" />
+      <part name="8412-136027-245.29" crc="ade7895c" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="8412-136027-249.45" crc="9bcb82db" map="01" />
+      <part name="8412-136027-250.54" crc="c8c9368f" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="8411-136027-152.146" crc="b65eeea2" map="01" />
+      <part name="8411-136027-151.132" crc="0d63dadc" map="10" />
+    </interleave>
+    <part name="8411-136027-157.11" crc="10ae3075" />
+    <part name="8411-136027-156.204" crc="60f3c616" />
+    <part name="8411-136027-155.174" crc="e59a6b72" />
+    <part name="8411-136027-114.203" crc="fc91328b" />
+    <part name="8411-136027-116.258" crc="5745f671" />
+    <part name="8411-136027-115.173" crc="720e5873" />
+    <part name="8411-136027-117.232" crc="3c68d0bc" />
+    <part name="8411-136027-146.56" crc="5635b8c1" />
+    <part name="8411-136027-147.66" crc="03d83cf8" />
+    <part name="8411-136027-148.76" crc="ad56013a" />
+    <interleave output="16">
+      <part name="8411-136027-153.184" crc="acf754e8" map="01" />
+      <part name="8411-136027-154.185" crc="f89d3e20" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="136027-143.ic223" crc="22c77af6" map="01" />
+      <part name="136027-142.ic213" crc="f6b8b70b" map="10" />
+    </interleave>
+    <part name="8411-136027-119.106" crc="88eec0fb" />
+    <part name="8411-136027-120.73" crc="407cbe65" />
+    <part name="8411-136027-113.48" crc="4b3d7956" />
+    <part name="8411-136027-118.281" crc="de418dc7" />
+    <part name="136027-133.57" crc="3b387d01" />
+    <part name="136027-134.58" crc="f6f4d7d9" />
+    <part name="136027-135.59" crc="824e7532" />
+    <part name="136027-133.36" crc="3b387d01" />
+    <part name="136027-134.37" crc="f6f4d7d9" />
+    <part name="136027-135.38" crc="824e7532" />
+    <part name="136027-133.8" crc="3b387d01" />
+    <part name="136027-134.9" crc="f6f4d7d9" />
+    <part name="136027-135.10" crc="824e7532" />
+    <part name="136027-124.85" crc="5aeef5cc" />
+    <part name="136027-124.116" crc="5aeef5cc" />
+    <part name="136027-124.148" crc="5aeef5cc" />
+    <part name="136027-136.276" crc="7b675b8b" />
+    <part name="136027-136.277" crc="7b675b8b" />
+    <part name="136027-123.25" crc="616a7a85" />
+    <part name="136027-138.ic33" crc="fafb6917" />
+    <part name="136027-139.ic40" crc="93deb894" />
+    <part name="136027-140.ic49" crc="aa5ed232" />
+    <part name="136027-141.ic50" crc="6b424cea" />
+  </rom>
+</misterromdescription>
