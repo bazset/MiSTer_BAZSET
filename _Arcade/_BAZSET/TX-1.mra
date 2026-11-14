@@ -4,19 +4,40 @@
      retimed output, T278 synchronous real original V30 M10K decoder, 3 original CPUs. -->
 <!-- WARNING: CPU/HDMI/reset formal timing closure pending; gameplay baseline owner approved.
      NOT VERIFIED. EXPERIMENTAL TEST, do not overwrite your working B08 MRA. -->
+<!-- HDMI panorama BUGFIX: 4:1 aspect old 12-bit scaler overflow at 1080p
+     gave 224x480 portrait. This T375 RBF uses MiSTer VIDEO_ARX/ARY[12]
+     scaled explicit 1920x480; preserves one centre 4:3 default. -->
+<!-- T382 expanded original World PPI nibble steering:
+     Native Spinner P1/P2, USB Mouse X, JogCon adapter Paddle/Wheel
+     P1/P2 and JogCon Fake D-pad pulses. Original PS1 JogCon requires
+     a compatible USB adapter. No raw PS1 decoding or motor force feedback.
+     Buffalo pad/one-screen starts remain default. -->
+<!-- T392 final: JogCon+mouse+native USB spinner default Slow
+     fractional signed +1/-1 pulses accumulate; prior version rounded
+     tiny positive motions to zero. Original WORLD 3CPU ROM preserved. -->
+<!-- TX1 World 1983 original physical start behavior: authentic
+     MAME PPI has Coin1/Coin2/Service/Gear, NO separate START pin.
+     The previously wrongly aliased Buffalo Start->Coin1 is removed.
+     SELECT is dedicated Coin1, L is Coin2, R is Service.
+     MAME WORLD DIP 0xE000 normal paid No Bonus FORCED even if stale
+     previously saved "Free Play" status bit23 is set; the Free Play
+     menu item is removed. Original game ROM starts race after coin.
+     Existing Buffalo Start slot deliberately mapped UNUSED so old
+     user controller mappings are not shuffled. -->
 <!-- Starts ONE centre screen by default, three seamless HDMI only on manual OSD opt-in. -->
+<!-- Correct O[60] HPS bit-index syntax makes centre/right choice selectable; renamed controller label does not change controller mapping. -->
 <!-- ROM supplied by owner from original 43-chip tx1.zip. No ROM in ZIP. -->
 <misterromdescription>
   <about source="TX-1 World (B01) working B09 original arcade CPU+video/audio and freeze recovery; corrected LOW/HIGH gear HUD only; one centre screen startup, opt-in seamless HDMI 3screen, CRT centre, 7 controls, original 43 chip World ROM and 4KB NVRAM" />
   <rotation>horizontal</rotation>
-  <name>TX-1 World (B01 CRT SPINNER BUFFALO TEST)</name>
+  <name>TX-1 World (B01 GEAR OSD FIX TEST)</name>
   <setname>tx1</setname>
   <year>1983</year>
   <manufacturer>Tatsumi</manufacturer>
   <players>1</players>
-  <rbf>Arcade-TX1</rbf>
+  <rbf>Arcade-TX1_World_B01_T480_GEAR_OSD_FIXED</rbf>
   <region>World</region>
-  <buttons names="Accelerator,Brake,Gear,Service,Credit,Start,Coin 2" default="A,B,X,R,Select,Start,L" count="7" />
+  <buttons names="Accelerator,Brake,Gear,Service,Credit / Coin 1,Start (Unused),Coin 2" default="A,B,X,R,Select,Start,L" count="7" />
   <nvram index="2" size="4096" />
   <rom index="0" zip="tx1.zip">
     <interleave output="16">
