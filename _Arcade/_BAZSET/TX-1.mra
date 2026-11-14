@@ -35,7 +35,7 @@
   <year>1983</year>
   <manufacturer>Tatsumi</manufacturer>
   <players>1</players>
-  <rbf>Arcade-TX1_World_B01_T480_GEAR_OSD_FIXED</rbf>
+  <rbf>Arcade-TX1</rbf>
   <region>World</region>
   <buttons names="Accelerator,Brake,Gear,Service,Credit / Coin 1,Start (Unused),Coin 2" default="A,B,X,R,Select,Start,L" count="7" />
   <nvram index="2" size="4096" />
