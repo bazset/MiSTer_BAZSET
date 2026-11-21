@@ -41,7 +41,7 @@ ROM names, CRCs and DIP definitions follow MAME's src/mame/taito/rbisland.cpp
 and src/mame/taito/taitocchip.cpp.
 -->
 <misterromdescription>
-<rbf>RainbowIslands_bazset</rbf>
+<rbf>Rainbow_Islands_B02</rbf>
     <name>Rainbow Islands - Extra Version</name>
     <setname>rbislande</setname>
     <year>1988</year>
