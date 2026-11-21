@@ -1,19 +1,8 @@
-<!-- BAZSET CORE - Commando (World) - source candidate; NOT YET HARDWARE TESTED
-RBF FILE: Arcade-CommandoCRT.rbf (must be genuinely fitted/validated before install)
-REQUIRED ROM ZIP FILE(S): commando.zip (user-supplied legal dump only)
-BAZSET CRT modifications: output video/OSD, high-score adapter, cheats, pause.
-Original Commando game copyright (c) CAPCOM, 1985.
-Based on GPL-licensed JTCommando by Jose Tejada / Jotego;
-core source: https://github.com/jotego/jtcores
-MRA derivation from jtcores_mister (2026), original XML GPLv2; retained
-source provenance and applicable GPL notices in Commando_CRT/docs.
-No promotional on-screen splash/credits are used; this comment is legal attribution.
-THIS IS NOT A FUNCTIONAL RBF RELEASE AND DOES NOT CONTAIN ROMs.
--->
+<?xml version='1.0' encoding='utf-8'?>
 <misterromdescription>
     <about author="BAZSET CRT adaptation" source="https://github.com/jotego/jtcores" />
     <rotation>vertical (ccw)</rotation>
-    <name>Commando (BAZSET CRT Experimental)</name>
+    <name>Commando (BAZSET CRT N21 RGB Fix Test)</name>
     <setname>commando</setname>
     <mameversion>0282</mameversion>
     <year>1985</year>
