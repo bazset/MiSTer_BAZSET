@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<misterromdescription>
+  <rbf>Arcade_Enforce</rbf>
+  <name>Enforce (World)</name>
+  <setname>enforce</setname>
+  <manufacturer>Taito</manufacturer>
+  <rom index="0" zip="enforce.zip" type="merged" md5="none">
+    <interleave output="16">
+      <part name="b58-38.27" crc="a1aa0191" map="01" />
+      <part name="b58-36.19" crc="40f43da3" map="10" />
+    </interleave>
+    <interleave output="16">
+      <part name="b58-37.26" crc="e823c85c" map="01" />
+      <part name="b58-35.18" crc="8b3ceb12" map="10" />
+    </interleave>
+    <part name="b58-32.41" crc="f3fd8eca" />
+    <interleave output="16">
+      <part name="b58-09.13" crc="9ffd5b31" map="12" />
+    </interleave>
+    <interleave output="64">
+      <part name="b58-04.7" crc="9482f08d" map="00000012" />
+      <part name="b58-03.6" crc="158bc440" map="00001200" />
+      <part name="b58-02.2" crc="6a6e307c" map="00120000" />
+      <part name="b58-01.1" crc="01e9f0a8" map="12000000" />
+    </interleave>
+    <part name="b58-06.116" crc="b3495d70" />
+    <part name="b58-05.71" crc="d1f4991b" />
+    <part name="b58-07.11" crc="eeb5ba08" />
+    <part name="b58-08.12" crc="049243cf" />
+    <part name="b58-10.14" crc="edce0cc1" />
+  </rom>
+  <nvram index="2" size="4" />
+  <switches default="ff,ef" base="16">
+    <dip name="Service Mode" bits="2" ids="On,Off" />
+    <dip name="Demo Sounds" bits="3" ids="Off,On" />
+    <dip name="Coin A" bits="4,5" ids="4 Coins/1 Credit,3 Coins/1 Credit,2 Coins/1 Credit,1 Coin/1 Credit" />
+    <dip name="Coin B" bits="6,7" ids="1 Coin/6 Credits,1 Coin/4 Credits,1 Coin/3 Credits,1 Coin/2 Credits" />
+    <dip name="Difficulty" bits="8,9" ids="Hardest,Hard,Easy,Normal" />
+    <dip name="Background Scenery" bits="12" ids="Normal,Crazy scrolling" />
+  </switches>
+  <buttons names="Laser,Gatling Gun,Start,Coin,Coin2,Service,Pause" default="A,B,Start,Select,R,L,C" count="7" />
+</misterromdescription>
