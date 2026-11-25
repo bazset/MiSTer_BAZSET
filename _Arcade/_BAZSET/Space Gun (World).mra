@@ -1,0 +1,132 @@
+<!--
+Space Gun (Taito, 1990). Taito Z System, twin 68000 + TC0100SCN + TC0110PCR
++ 16x8 zoom sprites + YM2610 sound (no Z80). Two light guns via ADC0809.
+
+Requires spacegun.zip.
+
+Stream layout (matches REGIONS in scripts/rom_build.py, verified this session
+against doc/mame/taito_z.cpp's ROM_START(spacegun), CRC-checked, and both
+CPUs' reset vectors asserted sane by rom_build.py):
+    0x000000  main 68000 program   512KB  (2x ROM_LOAD16_BYTE pairs)
+    0x080000  sub 68000 program    256KB  (1x ROM_LOAD16_BYTE pair)
+    0x0C0000  TC0100SCN tile ROM   512KB  (ROM_LOAD16_WORD_SWAP, single file)
+    0x140000  sprites                4MB  (ROM_LOAD64_WORD_SWAP x4)
+    0x540000  spritemap (STY)      512KB  (ROM_LOAD16_WORD, flat)
+    0x5C0000  ADPCM-A samples      512KB  (flat)
+    0x640000  ADPCM-B samples      512KB  (flat)
+
+MAIN/SUB CPU interleave map polarity (01/10) matches the exact idiom already
+confirmed working on real hardware in Superman's/Gigandes'/Chase H.Q.'s own
+MRAs for the same ROM_LOAD16_BYTE pattern - not guessed.
+
+SPRITE 4-LANE INTERLEAVE (ROM_LOAD64_WORD_SWAP x4, offsets 0/2/4/6): the
+map strings below are copied 1:1 from Chase H.Q. (World).mra, whose lane
+order was verified byte-for-byte against chasehq_flat.bin produced by the
+same interleave() as rom_build.py's load64() (see codex_changes.md
+2026-08-19/20). rom_build.py asserts the same packing this session.
+
+SGJOY13: a pre-calibrated 93C46 image is embedded in FPGA startup RAM.
+No factory 93c46.ic93 transfer is performed by this MRA. A saved index-1
+NVRAM file overrides it on later boots. Uses 93C46 dummy-zero READ protocol.
+-->
+<misterromdescription>
+    <rbf>Space_Gun</rbf>
+    <name>Space Gun (World)</name>
+    <setname>spacegun</setname>
+    <year>1990</year>
+    <manufacturer>Taito</manufacturer>
+    <about author="bazset" source="https://github.com/bazset" patreon="https://www.patreon.com/cw/bazset"/>
+    <players>2</players>
+    <rotation>horizontal</rotation>
+    <region>World</region>
+
+    <rom index="0" zip="spacegun.zip" type="merged" md5="none">
+
+        <!-- maincpu: c57-18.62/c57-20.74 (low half), c57-17.59/c57-22.73 (high half) -->
+        <interleave output="16">
+            <part name="c57-18.62" crc="19d7d52e" map="01"/>
+            <part name="c57-20.74" crc="2e58253f" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="c57-17.59" crc="e197edb8" map="01"/>
+            <part name="c57-22.73" crc="5855fde3" map="10"/>
+        </interleave>
+
+        <!-- sub: c57-15+.27/c57-16+.29 (actual labels "C57 15*"/"C57 16*") -->
+        <interleave output="16">
+            <part name="c57-15+.27" crc="b36eb8f1" map="01"/>
+            <part name="c57-16+.29" crc="bfb5d1e7" map="10"/>
+        </interleave>
+
+        <!-- tc0100scn: single ROM_LOAD16_WORD_SWAP file -->
+        <interleave output="16">
+            <part name="c57-06.52" crc="4ebadd5b" map="12"/>
+        </interleave>
+
+        <!-- sprites: c57-01.25(lane0)/c57-02.24(lane1)/c57-03.12(lane2)/c57-04.11(lane3) -->
+        <!-- lane order copied 1:1 from Chase H.Q. (World).mra (byte-verified idiom) -->
+        <interleave output="64">
+            <part name="c57-01.25" crc="f901b04e" map="00000012"/>
+            <part name="c57-02.24" crc="21ee4633" map="00001200"/>
+            <part name="c57-03.12" crc="fafca86f" map="00120000"/>
+            <part name="c57-04.11" crc="a9787090" map="12000000"/>
+        </interleave>
+
+        <!-- spritemap: single ROM_LOAD16_WORD file, no swap -->
+        <part name="c57-05.36" crc="6a70eb2e"/>
+
+        <!-- ADPCM-A: single file, flat -->
+        <part name="c57-07.76" crc="ad653dc1"/>
+
+        <!-- ADPCM-B: single file, flat -->
+        <part name="c57-08.75" crc="22593550"/>
+
+    </rom>
+
+    <!-- SGJOY13 explicitly does not load the factory EEPROM ROM into index 1.
+         Only saved MiSTer NVRAM index1 may replace calibrated RTL defaults. -->
+    <!-- SGJOY13: stock ROM index1 EEPROM seed removed to use calibrated RTL defaults.
+         A previously saved MiSTer NVRAM index1 file still takes precedence.
+         This prevents the factory dump from replacing the calibrated image on first boot. -->
+    
+    <!-- SGJOY15: user-generated MAME calibration, NOT 93c46.ic93 factory dump.
+         Explicit MiSTer index-1 seed guarantees 128-byte EEPROM initialization
+         before game CPU runs on first launch; saved NVRAM index1 loads later. -->
+    <rom index="1">
+      <part>
+        10 00 F0 00 01 00 B6 6D 10 00 F0 00 01 00 49 12
+        10 00 F0 00 01 00 B6 6D 10 00 F0 00 01 00 49 12
+        80 00 80 00 80 00 80 00 01 00 B6 6D 01 00 49 12
+        01 00 B6 6D 01 00 49 12 01 00 B6 6D 01 00 49 12
+        01 00 B6 6D 01 00 49 12 F9 F9 FF FF FF FF FF FF
+        FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+        FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+        FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+      </part>
+    </rom>
+    <!-- DIRECT GAME: intentionally do not load/restore a potentially stale saved index-1 NVRAM.
+    The verified 128-byte game-calibrated seed inside rom index=1 is loaded fresh each start.
+    This launcher will NOT save high scores or calibration to SD card. Use persistent-save MRA instead. -->
+
+    <switches default="FF,FF" base="0">
+        <!-- Bits from INPUT_PORTS_START(spacegun) in doc/mame/taito_z.cpp.
+             DSWA = bits 0-7, DSWB = bits 8-15; ids listed for raw dip value
+             0,1,... in that order. Defaults below all match the driver's
+             PORT_DIPSETTING defaults with both bytes = FF. -->
+        <dip name="Gunsight Power Up" bits="1" ids="On,Off"/>
+        <!-- SGJOY17 always forces DSWA-3 NORMAL GAME. TEST MODE unavailable. -->
+        <dip name="Demo Sounds" bits="3" ids="Off,On"/>
+        <dip name="Coin A" bits="4,5" ids="4C 1C,3C 1C,2C 1C,1C 1C"/>
+        <dip name="Coin B" bits="6,7" ids="1C 6C,1C 4C,1C 3C,1C 2C"/>
+        <dip name="Difficulty" bits="8,9" ids="Hardest,Hard,Easy,Medium"/>
+        <dip name="Allow Continue" bits="14" ids="Off,On"/>
+        <dip name="Disable Pedal" bits="15" ids="On,Off"/>
+    </switches>
+
+    <!-- Names/count match the core's J1/J2 control schema. Both players use
+         Fire, Alt Fire and Pedal plus Start/Coin through TC0510NIO; gun axes
+         are supplied through the original ADC by analog, mouse or digital D-pad aim. -->
+    <buttons names="Fire,Alt Fire,Pedal,Start,Coin,Pause,Service"
+             default="A,B,X,Start,Select,L,R" count="3"/>
+
+</misterromdescription>
