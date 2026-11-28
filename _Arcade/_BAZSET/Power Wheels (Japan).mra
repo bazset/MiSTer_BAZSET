@@ -6,7 +6,7 @@
   <manufacturer>Taito</manufacturer>
   <rbf>Double_Axle</rbf>
   <players>1</players>
-  <rom index="0" zip="pwheelsj.zip">
+  <rom index="0" zip="dblaxle.zip|pwheelsj.zip">
     <interleave output="16">
       <part name="c78-26-2.2" crc="25c8eb2e" map="01" />
       <part name="c78-28-2.4" crc="a9500eb1" map="10" />
@@ -36,8 +36,8 @@
     <part name="c78-02.46" crc="8882d2b7" />
     <part name="c78-03.31" crc="9b926a2f" />
   </rom>
-  <switches default="ff,fb" base="8">
-    <dip name="Gear shift" bits="0,1" ids="Inverted,Normal" /><dip name="Service" bits="0,2" ids="On,Off" /><dip name="Demo Sounds" bits="0,3" ids="Off,On" /><dip name="Coin A" bits="0,4,5" ids="2 Coins/3 Credits,2 Coins/1 Credit,1 Coin/2 Credits,1 Coin/1 Credit" /><dip name="Coin B" bits="0,6,7" ids="2 Coins/3 Credits,2 Coins/1 Credit,1 Coin/2 Credits,1 Coin/1 Credit" /><dip name="Difficulty" bits="1,0,1" ids="Hardest,Hard,Easy,Medium" /><dip name="Network (link)" bits="1,2" ids="Off,On" /><dip name="Player Truck" bits="1,3" ids="Blue,Red" /><dip name="Back button" bits="1,4" ids="Inverted,Normal" /></switches>
+  <switches default="ff,fb">
+    <dip name="Gear shift" bits="1" ids="Inverted,Normal" /><dip name="Service" bits="2" ids="On,Off" /><dip name="Demo Sounds" bits="3" ids="Off,On" /><dip name="Coin A" bits="4,5" ids="2 Coins/3 Credits,2 Coins/1 Credit,1 Coin/2 Credits,1 Coin/1 Credit" /><dip name="Coin B" bits="6,7" ids="2 Coins/3 Credits,2 Coins/1 Credit,1 Coin/2 Credits,1 Coin/1 Credit" /><dip name="Difficulty" bits="8,9" ids="Hardest,Hard,Easy,Medium" /><dip name="Network (link)" bits="10" ids="Off,On" /><dip name="Player Truck" bits="11" ids="Blue,Red" /><dip name="Back button" bits="12" ids="Inverted,Normal" /></switches>
   
   <buttons names="Accel,Brake,Nitro,Gear,Reverse,Start,Coin,Pause" />
 </misterromdescription>
