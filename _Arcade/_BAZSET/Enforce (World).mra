@@ -36,7 +36,7 @@
     <dip name="Coin A" bits="4,5" ids="4 Coins/1 Credit,3 Coins/1 Credit,2 Coins/1 Credit,1 Coin/1 Credit" />
     <dip name="Coin B" bits="6,7" ids="1 Coin/6 Credits,1 Coin/4 Credits,1 Coin/3 Credits,1 Coin/2 Credits" />
     <dip name="Difficulty" bits="8,9" ids="Hardest,Hard,Easy,Normal" />
-    <dip name="Background Scenery" bits="12" ids="Normal,Crazy scrolling" />
+    <dip name="Scenery" bits="12" ids="Normal,Crazy scrolling" values="0,1" />
   </switches>
   <buttons names="Laser,Gatling Gun,Start,Coin,Coin2,Service,Pause" default="A,B,Start,Select,R,L,C" count="7" />
 </misterromdescription>
